@@ -1,6 +1,19 @@
 ﻿@model List<Category>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
-<h1>Category LIst</h1>
+<div class="container">
+	<div class="row pt-4 pb-3">
+		<div class="col-6">
+			<h2 class="text-primary">
+				Category List
+			</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a class="btn btn-primary" asp-controller="Category" asp-action="Create">
+				<i class="bi bi-plus-circle"></i> Create New Category
+			</a>
+		</div>
+	</div>
 <table class="table table-bordered table-striped">
 	<thead>
 		
@@ -15,7 +28,15 @@
 			<tr>
 				<td>@category.Name</td>
 				<td>@category.DisplayOrder</td>
+					<td>
+						<a class="btn btn-secondary" asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id">
+							<i class="bi bi-pencil-square"></i> Edit
+						</a>
+						<a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id">
+							<i class="bi bi-trash"></i> Delete
+						</a>
 			</tr>
 		}
 		
 </table>
+</div>
