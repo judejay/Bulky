@@ -29,20 +29,30 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var category in Model.CategoresList)
+			
+			@if (Model.CategoresList == null || !Model.CategoresList.Any())
 			{
 				<tr>
-					<td>@category.Name</td>
-					<td>@category.DisplayOrder</td>
-					<td>
-						<a class="btn btn-secondary" asp-page="categories/edit" >
-							<i class="bi bi-pencil-square"></i> Edit
-						</a>
-						<a class="btn btn-danger" asp-page="categories/delete" >
-							<i class="bi bi-trash"></i> Delete
-						</a>
+					<td colspan="2" class="text-center">No categories found.</td>
 				</tr>
 			}
-
+			else
+			{
+				foreach (var category in Model.CategoresList)
+				{
+					<tr>
+						<td>@category.Name</td>
+						<td>@category.DisplayOrder</td>
+						<td>
+							<a class="btn btn-secondary" asp-page="categories/edit">
+								<i class="bi bi-pencil-square"></i> Edit
+							</a>
+							<a class="btn btn-danger" asp-page="categories/delete">
+								<i class="bi bi-trash"></i> Delete
+							</a>
+						</td>
+					</tr>
+				}
+			}
 	</table>
 </div>
